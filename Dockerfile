@@ -1,6 +1,6 @@
 FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel
-LABEL maintainer="prime intellect"
-LABEL repository="open_diloco"
+LABEL maintainer="aiml lab"
+LABEL repository="open_diloco_cluster"
 
 # Set en_US.UTF-8 locale by default
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment
