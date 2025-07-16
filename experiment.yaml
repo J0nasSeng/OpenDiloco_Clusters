@@ -1,31 +1,15 @@
 name: Federated LLAMA Pre-Training
 description: Federated pre-training of a LLAMA model.
 
-entrypoint: >-
-  python3 open_diloco/train_diloco_torch.py --config configs/config.yaml
-
 environment:
   image:
-    gpu: my-dockerhub-user/my-custom-image:latest  # Replace with your actual image
-    cpu: my-dockerhub-user/my-custom-image:latest
-  environment_variables:
-    - MY_ENV_VAR=value123
-    - ANOTHER_VAR=abc
-
-bind_mounts:
-  - host_path: /pfss/mlde/mlde_ext
-    container_path: /pfss/mlde/mlde_ext
-    read_only: false
-  - host_path: /pfss/mlde/users/js57fyzo
-    container_path: /pfss/mlde/users/js57fyzo
-    read_only: false
+    type: docker
+    #gpu: jonassengaiml/opendiloco:latest  # Replace with your actual image
+    cpu: jonassengaiml/opendiloco:latest
 
 resources:
-  slots: 2  # Number of GPUs; set to 0 for CPU-only training
+  slots: 0 # Number of GPUs; set to 0 for CPU-only training
+  resource_pool: 42_Compute
 
-max_restarts: 2
-searcher:
-  name: single
-  metric: val_loss
-  max_length:
-    batches: 1000
+
+entrypoint: null
